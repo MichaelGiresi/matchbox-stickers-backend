@@ -2,6 +2,7 @@ package com.matchbox.matchboxstickers.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import net.minidev.json.annotate.JsonIgnore;
 
 @Entity
 @Data
@@ -28,7 +29,17 @@ public class ShippingAddress {
     @Column(name = "zip_code")
     private String zipCode;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
+
+    public Long getCustomerId() {
+        if(this.customer != null) {
+            return this.customer.getId();
+        } else {
+            return null;
+        }
+
+    }
 }
