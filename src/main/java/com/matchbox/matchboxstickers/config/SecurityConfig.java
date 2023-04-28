@@ -1,5 +1,8 @@
 package com.matchbox.matchboxstickers.config;
 
+import com.matchbox.matchboxstickers.entity.Customer;
+import com.matchbox.matchboxstickers.entity.Order;
+import com.matchbox.matchboxstickers.entity.ShippingAddress;
 import com.matchbox.matchboxstickers.entity.Product;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -49,6 +52,9 @@ public class SecurityConfig extends AbstractHttpConfigurer<SecurityConfig, HttpS
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
         config.exposeIdsFor(Product.class);
+        config.exposeIdsFor(Customer.class);
+        config.exposeIdsFor(ShippingAddress.class);
+        config.exposeIdsFor(Order.class);
         // Add other entities for which you want to expose the ids
     }
 }
