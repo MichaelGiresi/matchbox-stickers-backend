@@ -4,6 +4,8 @@ import com.matchbox.matchboxstickers.entity.Product;
 import com.matchbox.matchboxstickers.service.ProductService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/products")
 public class ProductController {
@@ -25,4 +27,10 @@ public class ProductController {
     public Product updateProduct(@PathVariable("id") Long id, @RequestBody Product product) {
         return productService.updateProduct(id, product);
     }
+
+    @GetMapping("/")
+    public List<Product> getAllProducts() {
+        return productService.findAll();
+    }
+
 }
