@@ -35,6 +35,7 @@ public class ProductController {
 
     @DeleteMapping("/{id}")
     public void deleteProduct(@PathVariable("id") Long id) {
+        System.out.println("Received request to delete product with id:" + id);
         productService.deleteProduct(id);
     }
 
